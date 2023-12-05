@@ -1,0 +1,110 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    controllerName="zfsaccountcreation.controller.MainWizard"
+>
+    <form:SimpleForm
+        id="form1"
+        editable="true"
+        layout="ResponsiveGridLayout"
+    >
+        <Label
+           
+            text="{i18n>Step1}" 
+            required="true"
+        />
+        <Select
+            
+            forceSelection="false"
+            change="onChangeStep1"
+            selectedKey="{StepModel>/SelectedStep1}"
+            items="{
+            path: '/Step1Set',
+            sorter: { path: 'Step1' }
+        }"
+        >
+            <core:Item
+               
+                key="{Step1}"
+                text="{Step1}"
+            />
+        </Select>
+
+        <Label
+           
+            text="{i18n>Step2}" 
+            required="true"
+        />
+
+        <Select
+           
+            visible="{StepModel>/Step2Visibility}"
+            change="onChangeStep2"
+            forceSelection="false"
+            selectedKey="{StepModel>/SelectedStep2}"
+            items="{
+            path: 'StepModel>/Step2items',
+            sorter: { path: 'Step2' }
+        }"
+        >
+            <core:Item
+                
+                key="{StepModel>Step2}"
+                text="{StepModel>Step2}"
+            />
+        </Select>
+
+        <Label
+            
+            text="{i18n>Step3}" 
+            required="true"
+        />
+
+        <Select
+           
+            visible="{StepModel>/Step3Visibility}"
+            change="onChangeStep3"
+            forceSelection="false"
+            selectedKey="{StepModel>/SelectedStep3}"
+            items="{
+        path: 'StepModel>/Step3items',
+        sorter: { path: 'Step3' }
+    }"
+        >
+            <core:Item
+               
+                key="{StepModel>Step3}"
+                text="{StepModel>Step3}"
+            />
+        </Select>
+
+        <Label
+           
+            text="{i18n>Step4}" 
+            required="true"
+        />
+
+        <Select
+           
+            visible="{StepModel>/Step4Visibility}"
+            forceSelection="false"
+            change="onChangeStep4"
+            selectedKey="{StepModel>/SelectedStep4}"
+            items="{
+    path: 'StepModel>/Step4items',
+    sorter: { path: 'Step4' }
+}"
+        >
+            <core:Item
+              
+                key="{StepModel>Step4}"
+                text="{StepModel>Step4}"
+            />
+        </Select>
+    </form:SimpleForm>
+</core:FragmentDefinition>

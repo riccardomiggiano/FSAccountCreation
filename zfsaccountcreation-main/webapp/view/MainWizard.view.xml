@@ -1,0 +1,200 @@
+<mvc:View
+    height="100%"
+    controllerName="zfsaccountcreation.controller.MainWizard"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+>
+    <NavContainer id="wizardNavContainer">
+        <pages>
+            <Page
+                id="wizardContentPage"
+                showHeader="false"
+            >
+                <content>
+                    <Wizard
+                        id="ApprovalWizard"
+                        complete="completedHandler"
+                        enableBranching="true"
+                        class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                        finishButtonText=""
+                        showNextButton="true"
+                        backgroundDesign="Transparent"
+
+                    >
+                        <WizardStep
+                            id="WStep"
+                            nextStep="Level1WStep"
+                            title="{i18n>Step1Title}" 
+                            
+                        >
+                            <ObjectHeader>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="Please Select Value from Below Dropdown"
+                                    />
+                                </attributes>
+                            </ObjectHeader>
+
+                            <core:Fragment
+                                fragmentName="zfsaccountcreation.view.Step1"
+                                type="XML"
+                            />
+                        </WizardStep>
+
+                        <WizardStep
+                            id="Level1WStep"
+                            title="{i18n>Step1Title}"
+                            nextStep="Level2WStep"
+                        >
+                            <ObjectHeader>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="Please Select Value from Below Dropdown"
+                                    />
+                                </attributes>
+                            </ObjectHeader>
+                            <!-- items="{/Step1Set}" -->
+
+                            <core:Fragment
+                                fragmentName="zfsaccountcreation.view.Step2"
+                                type="XML"
+                            />
+                        </WizardStep>
+
+                        <WizardStep
+                            id="Level2WStep"
+                            title="{i18n>Step1Title}"
+                            nextStep="Level3WStep"
+                        >
+                            <ObjectHeader>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="{StepModel>/Level1Note}"
+                                    />
+                                </attributes>
+                            </ObjectHeader>
+                            <!-- items="{/Step1Set}" -->
+
+                            <core:Fragment
+                                fragmentName="zfsaccountcreation.view.Step3"
+                                type="XML"
+                            />
+                        </WizardStep>
+
+                        <WizardStep
+                            id="Level3WStep"
+                            title="{i18n>Step1Title}"
+                            nextStep="Level4WStep"
+                        >
+                            <ObjectHeader>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="{StepModel>/Level2Note}"
+                                    />
+                                </attributes>
+                            </ObjectHeader>
+                            <!-- items="{/Step1Set}" -->
+
+                            <core:Fragment
+                                fragmentName="zfsaccountcreation.view.Step4"
+                                type="XML"
+                            />
+                        </WizardStep>
+
+                        <WizardStep
+                            id="Level4WStep"
+                            title="{i18n>Step1Title}"
+                            nextStep="Level5WStep"
+                        >
+                            <ObjectHeader>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="{StepModel>/Level3Note}"
+                                    />
+                                </attributes>
+                            </ObjectHeader>
+                            <!-- items="{/Step1Set}" -->
+
+                            <core:Fragment
+                                fragmentName="zfsaccountcreation.view.Step5"
+                                type="XML"
+                            />
+                        </WizardStep>
+
+                        <WizardStep
+                            id="Level5WStep"
+                            title="{i18n>Step1Title}"
+                            nextStep="Level6WStep"
+                        >
+                            <ObjectHeader>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="{StepModel>/Level4Note}"
+                                    />
+                                </attributes>
+                            </ObjectHeader>
+                            <!-- items="{/Step1Set}" -->
+
+                            <core:Fragment
+                                fragmentName="zfsaccountcreation.view.Step6"
+                                type="XML"
+                            />
+                        </WizardStep>
+
+                        <WizardStep
+                            id="Level6WStep"
+                            title="{i18n>Step1Title}"
+                        >
+                            <ObjectHeader>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="{StepModel>/Level4Note}"
+                                    />
+                                </attributes>
+                            </ObjectHeader>
+                            <!-- items="{/Step1Set}" -->
+
+                            <core:Fragment
+                                fragmentName="zfsaccountcreation.view.Step7"
+                                type="XML"
+                            />
+                        </WizardStep>
+                    </Wizard>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <Button
+                            text="{i18n>ButtonCancel}"
+                            press="handleWizardCancel"
+                        />
+                        <Button
+                            text="{i18n>ButtonSubmit}"
+                            press="completedHandler"
+                            visible="{StepModel>/SubmitVisible}"
+                        />
+                        <Button
+                            text="{i18n>ButtonApprove}"
+                            press="ApproveHandler"
+                            visible="{StepModel>/ApprovalVisible}"
+                        />
+                        <Button
+                            text="{i18n>ButtonReject}"
+                            press="RejectHandler"
+                            visible="{StepModel>/ApprovalVisible}"
+                        />
+                        <Button
+                            text="{i18n>ButtonForward}"
+                            press="ForwardHandler"
+                            visible="{StepModel>/ApprovalVisible}"
+                        />
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </NavContainer>
+</mvc:View>

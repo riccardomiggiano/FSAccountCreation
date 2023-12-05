@@ -1,0 +1,49 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    controllerName="zfsaccountcreation.controller.MainWizard"
+>
+    <Label
+        text="{i18n>Step1}" 
+        required="true"
+    />
+    <Input
+        editable="false"
+        value="{StepModel>/SelectedStep1}"
+        visible="{StepModel>/Step1Visibility}"
+    />
+
+    <Label
+        text="{i18n>Step2}" 
+        required="true"
+    />
+    <Input
+        editable="false"
+        value="{StepModel>/SelectedStep2}"
+        visible="{StepModel>/Step2Visibility}"
+    />
+
+    <Label
+        text="{i18n>Step3}" 
+        required="true"
+    />
+    <Input
+        editable="false"
+        value="{StepModel>/SelectedStep3}"
+        visible="{StepModel>/Step3Visibility}"
+    />
+    <Label
+        text="{i18n>Step4}" 
+        required="true"
+    />
+    <Input
+        editable="false"
+        value="{StepModel>/SelectedStep4}"
+        visible="{StepModel>/Step4Visibility}"
+    />
+</core:FragmentDefinition>

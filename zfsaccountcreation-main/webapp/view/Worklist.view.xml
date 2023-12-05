@@ -1,0 +1,111 @@
+<mvc:View
+    controllerName="zfsaccountcreation.controller.Worklist"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic"
+>
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+    >
+        <semantic:titleHeading>
+            <Title text="{i18n>worklistTitle}" />
+        </semantic:titleHeading>
+
+        <semantic:headerContent>
+            <OverflowToolbar>
+                <!-- Existing buttons or controls ... -->
+                <ToolbarSpacer />
+                <Button
+                    text="{i18n>wlbutton1}" 
+                    press="handleNewButtonPress"
+                />
+            </OverflowToolbar>
+            <IconTabBar
+                id="iconTabBar"
+                select=".onQuickFilter"
+                expandable="false"
+            >
+                <content>
+                    <Table
+                        id="table"
+                        busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        noDataText="{worklistView>/tableNoDataText}"
+                        updateFinished=".onUpdateFinished"
+                        width="auto"
+                        items="{
+							path: '/ApprovalListSet'
+							
+						}"
+                    >
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title
+                                    id="tableHeader"
+                                    text="List To be approved"
+                                />
+                                <ToolbarSpacer />
+                                <SearchField
+                                    id="searchField"
+                                    tooltip="{i18n>worklistSearchTooltip}"
+                                    search=".onSearch"
+                                    width="auto"
+                                />
+                            </Toolbar>
+                        </headerToolbar>
+
+                        <columns>
+                            <Column id="nameColumn">
+                                <Text
+                                    id="nameColumnTitle"
+                                    text="{i18n>wlcolumn1}"
+                                />
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>wlcolumn2}" />
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>wlcolumn3}" />
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>wlcolumn4}" />
+                            </Column>
+							<Column>
+                                <Text text="{i18n>wlcolumn5}" />
+                            </Column>
+							<Column>
+                                <Text text="{i18n>wlcolumn6}" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                type="Navigation"
+                                press=".onPress"
+                            >
+                                <cells>
+                                    <ObjectIdentifier title="{Level06}" />
+                                    <Text text="{Step4}" />
+                                    <Text
+                                        text="{path: 'Time', formatter: '.formatDate'}"
+                                    />
+                                    <Text text="{Requester}" />
+									<Text text="{Status}" />
+									<Text text="{Approver}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </IconTabBar>
+        </semantic:headerContent>
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction
+                id="shareEmail"
+                press=".onShareEmailPress"
+            />
+        </semantic:sendEmailAction>
+    </semantic:SemanticPage>
+</mvc:View>

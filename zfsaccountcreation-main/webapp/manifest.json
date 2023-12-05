@@ -1,0 +1,163 @@
+{
+  "_version": "1.58.0",
+  "sap.app": {
+    "id": "zfsaccountcreation",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.11.4",
+      "toolsId": "bb4d3810-6ef7-485f-894a-12b17612cbc2"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZFS_ACCOUNT_CREATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zfsaccountcreation.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "zfsacc": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"metadataUrlParams": {
+						"sap-language": "en"
+					},
+					"serviceUrlParams": {
+						"sap-language": "en"
+					}
+				},
+				"dataSource": "mainService",
+				"preload": true
+			}
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "zfsaccountcreation.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        
+        {
+          "name": "RouteMainWorklist",
+          "pattern": ":?query:",
+          "target": [
+            "TargetMainWorkList"
+          ]
+        },
+        {
+          "name": "RouteMainWizard",
+          "pattern": "RouteMainWizard",
+          "target": 
+            "TargetMainWizard"
+          
+        },
+        {
+					"pattern": "TargetMainWizard({objectId})",
+					"name": "object",
+					"target": ["TargetMainWizard"]
+				}
+      ],
+      "targets": {
+        "TargetMainWorkList": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Worklist",
+          "viewName": "Worklist"
+        },
+        "TargetMainWizard": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MainWizard",
+          "viewName": "MainWizard"
+        },
+        "object": {
+					"name": "Object",
+					"id": "object",
+					"level": 2,
+					"title": "{i18n>objectViewTitle}"
+				}
+      }
+    },
+    "rootView": {
+      "viewName": "zfsaccountcreation.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

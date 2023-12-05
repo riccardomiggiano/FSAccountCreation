@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    controllerName="zfsaccountcreation.controller.MainWizard"
+>
+    <form:SimpleForm
+        editable="true"
+        layout="ResponsiveGridLayout"
+    >
+        <core:Fragment
+            fragmentName="zfsaccountcreation.view.StepB"
+            type="XML"
+        />
+       
+        <Label
+            text="{i18n>Level4}" 
+            required="true"
+        />
+        <Select
+            change="onChangeLevel4"
+            forceSelection="false"
+            selectedKey="{StepModel>/SelectedLevel4}"
+            items="{
+            path: 'StepModel>/Level4items',
+            sorter: { path: 'Level04' }
+        }"
+        >
+            <core:Item
+                key="{StepModel>Level04}"
+                text="{StepModel>Level04} {StepModel>Descrption}"
+            />
+        </Select>
+    </form:SimpleForm>
+</core:FragmentDefinition>

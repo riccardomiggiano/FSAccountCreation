@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    controllerName="zfsaccountcreation.controller.MainWizard"
+>
+
+
+    <Breadcrumbs separatorStyle="Slash">
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedStep1}"
+            visible="{StepModel>/Step1Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedStep2}"
+            visible="{StepModel>/Step2Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedStep3}"
+            visible="{StepModel>/Step3Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedStep4}"
+            visible="{StepModel>/Step4Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedLevel1V}"
+            visible="{StepModel>/Level1Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedLevel2V}"
+            visible="{StepModel>/Level2Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedLevel3V}"
+            visible="{StepModel>/Level3Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedLevel4V}"
+            visible="{StepModel>/Level4Visibility}"
+        />
+        <Link
+            press="onPress"
+            text="{StepModel>/SelectedLevel5V}"
+            visible="{StepModel>/Level5Visibility}"
+        />
+    </Breadcrumbs>
+</core:FragmentDefinition>
